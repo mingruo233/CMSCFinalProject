@@ -1,0 +1,69 @@
+
+html {
+    font-size: 22px;
+}
+
+body {
+    font-family: 'ABeeZee';
+    width: 50rem;
+    border-style: double;
+    border-color: plum;
+    border-width: 1rem;
+    padding: 0.5rem;
+    margin-left: 6rem;
+}
+
+div {
+    /*border-color: plum;
+    background-image: url(image/bf.jpeg);*/
+    background-color: white;
+    padding: 1rem;
+  
+}
+h1,h2 {
+    text-align: center;
+}
+.image {
+    display: flex;
+    justify-content: center;
+    margin-left: 10rem;
+    width:25rem;
+}
+#larger-heading {
+    font-size: 3em; /* adjust the value as per your preference */
+}
+table.menu {
+    width: 90%;
+    margin-bottom: 20px;
+    margin-left: 2rem;
+  }
+  table.menu th, table.menu td {
+    padding: 0.5rem;
+    text-align: center;
+    border: solid black;
+  }
+  table.menu th {
+    color:plum;
+  }
+  td:first-child, th:first-child {
+    width: 60%;
+  }
+  
+  td:last-child, th:last-child {
+    width: 40%;
+  }
+  .button {
+    font-size: 20px;
+    padding: 10px 20px; 
+  }
+
+  img {
+    display: flex;
+    justify-content: center;
+    border-width: 0.5rem;
+    border-color: plum;
+    border-style: dashed;
+    margin-top: 2rem;
+    margin-left: 8rem;
+    width:30rem;
+  }

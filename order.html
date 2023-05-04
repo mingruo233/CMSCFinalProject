@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Order</title>
+    <link rel="stylesheet" href="decoration.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&effect=neon|outline|emboss|shadow-multiple">
+<body>
+    <div>
+        <h1 class="font-effect-neon" id="larger-heading">Order Now</h1>
+        <p>Ready to order your delicious bingfen dessert? 
+            Fill out our simple order form below and we'll 
+            take care of the rest!</p>
+    </div>
+    <div>
+        <h2 class="font-effect-shadow-multiple">Menu</h2>
+        <table class="menu">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Price (USD)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Small</td>
+                <td>$3.99</td>
+              </tr>
+              <tr>
+                <td>Medium</td>
+                <td>$4.99</td>
+              </tr>
+              <tr>
+                <td>Large</td>
+                <td>$5.99</td>
+              </tr>
+            </tbody>
+          </table>    
+        <table class="menu">
+            <thead>
+                <tr>
+                  <th>Topping</th>
+                  <th>Price (USD)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Chopped Peanuts &#x1F44D</td>
+                  <td>$1.00</td>
+                </tr>
+                <tr>
+                    <td>Sliced Almonds</td>
+                    <td>$1.50</td>
+                  </tr>
+                <tr>
+                    <td>Haw Flakes &#x1F44D</td>
+                    <td>$1.50</td>
+                  </tr>
+                <tr>
+                  <td>Raisins</td>
+                  <td>$1.00</td>
+                </tr>
+                <tr>
+                  <td>Mango</td>
+                  <td>$1.00</td>
+                </tr>
+                <tr>
+                    <td>Watermelon</td>
+                    <td>$1.00</td>
+                </tr>
+                <tr>
+                    <td>Boba</td>
+                    <td>$1.00</td>
+                </tr>
+                <tr>
+                    <td>Grass Jelly</td>
+                    <td>$1.50</td>
+                </tr>
+              </tbody>
+        </table>   
+        <ul>
+            <li>&#x1F44D indicates popular items</li>
+            <li>Our bingfen is vegan and dairy-free</li>
+            <li>We apologize, but MangoDB is currently not available as a topping 
+                option for our Bingfen. However, we do offer fresh and juicy mango 
+                as a substitute!</li>
+          </ul>   
+    </div>
+    <div>
+        <h2 class="font-effect-shadow-multiple">Place an Order</h2>
+        <form action="http://localhost:5000/order" method="post">
+            <fieldset>
+                <legend>
+                    <strong>Customer Information</strong>
+                </legend>
+                
+                <label>Name: <input type="text" name="name"/></label>
+                <label>Email Address: <input type="email" name="email"  placeholder="example@notreal.notreal"></label>
+            </fieldset>
+            <fieldset>
+                <legend>Delivery Method</legend>
+                <label><input type="radio" name="delivery" value="pickup">Pick up order</label>
+                <label><input type="radio" name="delivery" value="delivery">Deliver order</label>
+            </fieldset>
+            <fieldset>
+                <legend>Size</legend>
+                <label><input type="radio" name="bfsize" value="small">Small</label>
+                <label><input type="radio" name="bfsize" value="medium">Medium</label>
+                <label><input type="radio" name="bfsize" value="large">Large</label>
+            </fieldset>
+            <fieldset>
+                <legend>Sugar Level</legend>
+                <label><input type="radio" name="sugarLevel" value="0sugar">0%</label>
+                <label><input type="radio" name="sugarLevel" value="30sugar">30%</label>
+                <label><input type="radio" name="sugarLevel" value="50sugar">50%</label>
+                <label><input type="radio" name="sugarLevel" value="70sugar">70%</label>
+                <label><input type="radio" name="sugarLevel" value="100sugar">100%</label>
+                <label><input type="radio" name="sugarLevel" value="130sugar">130%</label>
+                <label><input type="radio" name="sugarLevel" value="150sugar">150%</label>
+            </fieldset>
+            <fieldset>
+                <legend>Toppings</legend>
+                <select name="itemsSelected" multiple>
+                    <option value="peanuts">Chopped Peanuts</option>
+                    <option value="almond">Sliced Almonds</option>
+                    <option value="haw">Haw Flakes</option>
+                    <option value="raisins">Raisins</option>
+                    <option value="mango">Mango</option>
+                    <option value="watermelon">Watermelon</option>
+                    <option value="boba">Boba</option>
+                    <option value="jelly">Grass Jelly</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <legend>Tips</legend>
+                <label><input type="radio" name="tip" value="0tip">0%</label>
+                <label><input type="radio" name="tip" value="5tip">5%</label>
+                <label><input type="radio" name="tip" value="10tip">10%</label>
+                <label><input type="radio" name="tip" value="15tip">15%</label>
+                <label><input type="radio" name="tip" value="20tip">20%</label>
+            </fieldset>
+            <fieldset>
+                <legend>Additional Order Information</legend>
+                <label><textarea rows="5" cols="80" name="orderInformation"></textarea></label>
+            </fieldset>
+            <br>
+            <input class="button" type="reset"/>
+            <input class="button" type="submit" value="Place order"/>
+        </form>
+    </div>
+    <div>
+        <a href="/">HOME</a>
+    </div>
+    <div>
+        <hr>
+        <p> Developed by: Wenyu Chen and Shilin Huang</p>
+            <hr>
+        </div>
+</body>
