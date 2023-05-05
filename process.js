@@ -83,7 +83,7 @@ app.post("/ordeConfirmation", (request, response) => {
     let itemsList = all_toppings.filter((element) => 
     itemsSelected.includes(element.value));
     itemsList.forEach((element)=>
-    table_two+=`<tr><td>${element.name} </td><td>${element.value} </td></tr>`)
+    table_two+=`<tr><td>${element.name} </td><td>${element.cost} </td></tr>`)
     table_two += `</tbody>`
 
     const variables = {
@@ -95,10 +95,6 @@ app.post("/ordeConfirmation", (request, response) => {
         orderTableTopping: table_two
       };
     response.render("orderConfirmation",variables)
-    
-
-
-
  });
  
  async function insertOrder(client,databaseAndCollection,newOrder){
