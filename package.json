@@ -1,0 +1,17 @@
+{
+  "name": "cmscfinalproject",
+  "version": "1.0.0",
+  "description": "Final Project",
+  "main": "node process.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wenyu Chen and Shilin Huang",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "http": "^0.0.1-security"
+  }
+}
