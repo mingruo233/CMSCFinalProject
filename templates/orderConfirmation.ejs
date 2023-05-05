@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Order Confirmation</title>
-    <link rel="stylesheet" href="decoration.css" type="text/css">
+    <link rel="stylesheet" href="additional_files/decoration.css" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&effect=neon|outline|emboss|shadow-multiple">
 <body>
     <div>
@@ -15,9 +15,13 @@
             <strong>Email Address: </strong><%- email %><br>
             <strong>Delivery Method: </strong><%- delivery %><br>
             <h3>Order</h3>
-            <%- orderTable %>
+            <table class="order">
+                <%- orderTable %>
+            </table>
+            <table class="order">
+                <%- orderTableTopping %>
+            </table>
             <br>
-            <strong>Tips: </strong><%- tips %><br>
             <strong>Additional Information: </strong><%- info %><br>
         </div>
     </div>
