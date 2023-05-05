@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="additional_files/decoration.css" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&effect=neon|outline|emboss|shadow-multiple">
 <body>
+  <!-- TODO Nav-->
     <div>
         <h1 class="font-effect-neon" id="larger-heading">Order Now</h1>
         <p>Ready to order your delicious bingfen dessert? 
@@ -97,6 +98,10 @@
                 
                 <label>Name: <input type="text" name="name"/></label>
                 <label>Email Address: <input type="email" name="email"  placeholder="example@notreal.notreal"></label>
+                <label for="cc1">Phone Number:</label>
+                <input type="text" id="phone1" name="phone1" maxlength="3" placeholder="123" required class="inputNum"> -
+                <input type="text" id="phone2" name="phone2" maxlength="3" placeholder="456" required class="inputNum"> -
+                <input type="text" id="phone3" name="phone3" maxlength="4" placeholder="7890" required class="inputNum">
             </fieldset>
             <fieldset>
                 <legend>Delivery Method</legend>
@@ -139,6 +144,14 @@
                 <label><input type="radio" name="tip" value="10tip">10%</label>
                 <label><input type="radio" name="tip" value="15tip">15%</label>
                 <label><input type="radio" name="tip" value="20tip">20%</label>
+            </fieldset>
+            <fieldset>
+              <legend>Payment</legend>
+                <label for="cc1">Credit Card Number:</label>
+                <input type="text" id="cc1" name="cc1" maxlength="4" placeholder="0000" required class="inputNum"> -
+                <input type="text" id="cc2" name="cc2" maxlength="4" placeholder="0000" required class="inputNum"> -
+                <input type="text" id="cc3" name="cc3" maxlength="4" placeholder="0000" required class="inputNum"> -
+                <input type="text" id="cc4" name="cc4" maxlength="4" placeholder="0000" required class="inputNum">
             </fieldset>
             <fieldset>
                 <legend>Additional Order Information</legend>

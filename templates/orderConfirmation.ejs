@@ -7,22 +7,25 @@
     <link rel="stylesheet" href="additional_files/decoration.css" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&effect=neon|outline|emboss|shadow-multiple">
 <body>
+    <!-- TODO Nav-->
     <div>
         <h1 class="font-effect-neon" id="larger-heading">Order Confirmation</h1>
         <h2>Your order has been placed successfully!</h2>
         <div>
             <strong>Name: </strong><%- name %><br>
             <strong>Email Address: </strong><%- email %><br>
+            <strong>Phone Number: </strong><%- phone %><br><!-- TODO phone number -->
             <strong>Delivery Method: </strong><%- delivery %><br>
             <h3>Order</h3>
-            <table class="order">
+            <table class="menu">
                 <%- orderTable %>
             </table>
-            <table class="order">
+            <table class="menu">
                 <%- orderTableTopping %>
             </table>
             <br>
             <strong>Additional Information: </strong><%- info %><br>
+            <strong>Total Cost:</strong> <%- totalCost %> (USD)<br>
         </div>
     </div>
     <div>

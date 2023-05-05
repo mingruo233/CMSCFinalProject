@@ -61,8 +61,14 @@ app.use("/order", (request,response) =>{
 });
 app.post("/ordeConfirmation", (request, response) => {
     let {name, email, delivery, bfsize,sugarLevel,itemsSelected,tip,orderInformation} = request.body;
-
-
+    let total_cost = 0;
+    if (bfsize === "Small") {
+        total_cost +=3.99;
+    } else if (bfsize === "Medium") {
+        total_cost +=4.99;
+    } else {
+        total_cost +=6.99;
+    }
     /*(async() =>{
         try{
             await client.connect();
@@ -76,15 +82,18 @@ app.post("/ordeConfirmation", (request, response) => {
     */
     table_one =  `<thead><tr><th>Type </th> <th> Choice </th> </tr></thead>`
     table_one += `<tbody><tr><td>Size</td><td> ${captializeFirstLetter(bfsize)} </td> </tr>`
-    table_one += `<tr><td>Sugar Level</td><td> ${parseInt(sugarLevel)} </td> </tr>`
-    table_one += `<tr><td>Tip</td><td> ${parseInt(tip)} %</td> </tr></tbody>`
+    table_one += `<tr><td>Sugar Level</td><td> ${parseInt(sugarLevel)}% </td> </tr>`
+    table_one += `<tr><td>Tip</td><td> ${parseInt(tip)}%</td> </tr></tbody>`
 
-    table_two = `<thead><tr><th>Chosen Topping </th> <th> Cost </th> </tr></thead><tbody>`
+    table_two = `<thead><tr><th>Chosen Topping </th> <th> Cost (USD)</th> </tr></thead><tbody>`
     let itemsList = all_toppings.filter((element) => 
     itemsSelected.includes(element.value));
-    itemsList.forEach((element)=>
-    table_two+=`<tr><td>${element.name} </td><td>${element.cost} </td></tr>`)
+    itemsList.forEach((element)=> {
+        table_two+=`<tr><td>${element.name} </td><td>${element.cost} </td></tr>`;
+        total_cost += element.cost;
+    })
     table_two += `</tbody>`
+    total_cost += total_cost*parseInt(tip)*0.01;
 
     const variables = {
         name: name,
@@ -92,10 +101,15 @@ app.post("/ordeConfirmation", (request, response) => {
         delivery: delivery,
         info: orderInformation,
         orderTable: table_one,
-        orderTableTopping: table_two
+        orderTableTopping: table_two,
+        totalCost: total_cost.toFixed(2)
       };
     response.render("orderConfirmation",variables)
  });
+
+ app.use("/jobs", (request,response) =>{
+    response.render("jobs");
+});
  
  async function insertOrder(client,databaseAndCollection,newOrder){
     const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(newOrder);

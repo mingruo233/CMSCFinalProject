@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="additional_files/decoration.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&effect=neon|outline|emboss|shadow-multiple">
 <body>
+    <div class="navigation" style="text-align: right;">
+        <a href="/">Home</a>
+        <a href="/order">View Our Menu</a>
+        <a href="/trackorder">Track Order</a>
+        <a href="#TODO">Past Sales</a> 
+        <a href="/story">Who We Are</a>
+        <a href="/jobs">Find Jobs</a>
+      </div>
     <div>
         <h1 class="font-effect-neon" id="larger-heading">Wendy's Bingfen</h1>
     </div>
@@ -67,6 +75,7 @@
 <script>
     "use strict";
     window.onload = main; 
+    let picNum = 4; //TODO: update the number when adding new pictures
     let idGlobal;
     const intervalInMilliseconds = 1000;
     var photos = [];
@@ -78,7 +87,7 @@
         // store photos in an array
         let count = 0
         //TODO: change the number of photos
-        for(let i = 1; i <= 3; i++) {
+        for(let i = 1; i <= picNum; i++) {
             photos[count++] = "/additional_files/" + i + ".jpg";
         }
         // show the first image
