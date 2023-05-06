@@ -20,12 +20,7 @@ div {
 h1,h2 {
   text-align: center;
 }
-.image {
-  display: flex;
-  justify-content: center;
-  margin-left: 10rem;
-  width:25rem;
-}
+
 #larger-heading {
   font-size: 3em;
 }
@@ -70,6 +65,7 @@ img {
   margin-left: 8rem;
   width:30rem;
 }
+
 a:hover {
   font-size:0.9rem;
 }
@@ -79,10 +75,13 @@ a:visited{
 .inputNum {
   width: 30px;
 }
+.navigation {
+  text-align: right;
+}
 /* add a background image
 #backgroundDiv {
   background-color: rgb(165, 206, 223);
-  background-image: url(images/JimHenson.jpg);
+  background-image: url(/additional_files/3.jpg);
   background-size: 120%;
   background-repeat: no-repeat;
   background-attachment: scroll;
