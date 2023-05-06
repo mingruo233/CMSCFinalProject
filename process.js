@@ -28,7 +28,7 @@ const all_toppings = [{name:"Chopped Peanuts",value:"peanuts",cost:1.00},{name:"
 app.use(bodyParser.urlencoded({extended:false}));
 process.stdin.setEncoding("utf8"); /* encoding */
 console.log(`Web server is running at http://localhost:${portNumber}`);
-console.log("Type stop to shutdown the server");
+console.log("Type stop to shutdown the server, delete to delete all the database");
 process.stdin.on('readable', () => {  /* on equivalent to addEventListener */
 	let dataInput = process.stdin.read();
 	if (dataInput !== null) {
@@ -36,11 +36,25 @@ process.stdin.on('readable', () => {  /* on equivalent to addEventListener */
 		if (command === "stop") {
 			console.log("Shutting down the server");
             process.exit(0);  /* exiting */
-        } else{
+        } if(command === "delete"){
+            (async()=>{
+                try {
+                    await client.connect();
+                    const result = await client.db(databaseAndCollection.db)
+                    .collection(databaseAndCollection.collection)
+                    .deleteMany({});
+                    console.log("deleted");
+                } catch (e) {
+                    console.error(e);
+                } finally {
+                    await client.close();
+                }
+            })();
+        }else{
             console.log(`Invalid command: ${command}`);
         }
     }
-    process.stdout.write(`Type stop to shut down the server:`);
+    process.stdout.write(`Type stop to shutdown the server, delete to delete all the database`);
     process.stdin.resume();
 });
 app.listen(portNumber);
@@ -60,7 +74,7 @@ app.use("/order", (request,response) =>{
     response.render("order");
 });
 app.post("/ordeConfirmation", (request, response) => {
-    let {name, email, delivery, bfsize,sugarLevel,itemsSelected,tip,orderInformation} = request.body;
+    let {name, email, delivery, bfsize,sugarLevel,itemsSelected,tip,orderInformation,phone1,phone2,phone3,cc1,cc2,cc3,cc4} = request.body;
     let total_cost = 0;
     if (bfsize === "Small") {
         total_cost +=3.99;
@@ -69,17 +83,19 @@ app.post("/ordeConfirmation", (request, response) => {
     } else {
         total_cost +=6.99;
     }
-    /*(async() =>{
+    let phone = phone1+"-"+phone2+"-"+phone3;
+    let creditCard = cc1+cc2+cc3+cc4;
+    let credit = parseInt(creditCard);
+    (async() =>{
         try{
             await client.connect();
-            let order = {name:name,email:email,delivery:delivery,bfsize:bfsize,sugarLevel:sugarLevel,topping:itemsSelected,tip:tip,orderInformation:orderInformation};
+            let order = {name:name,email:email,delivery:delivery,bfsize:bfsize,sugarLevel:sugarLevel,topping:itemsSelected,tip:tip,orderInformation:orderInformation,phoneNum:phone,creditCard:credit};
             await insertOrder(client,databaseAndCollection,order);
             await client.close();
         }catch(e){
             console.error(e);
         }
     })();
-    */
     table_one =  `<thead><tr><th>Type </th> <th> Choice </th> </tr></thead>`
     table_one += `<tbody><tr><td>Size</td><td> ${captializeFirstLetter(bfsize)} </td> </tr>`
     table_one += `<tr><td>Sugar Level</td><td> ${parseInt(sugarLevel)}% </td> </tr>`
@@ -102,7 +118,8 @@ app.post("/ordeConfirmation", (request, response) => {
         info: orderInformation,
         orderTable: table_one,
         orderTableTopping: table_two,
-        totalCost: total_cost.toFixed(2)
+        totalCost: total_cost.toFixed(2),
+        phone: phone
       };
     response.render("orderConfirmation",variables)
  });
@@ -110,7 +127,22 @@ app.post("/ordeConfirmation", (request, response) => {
  app.use("/jobs", (request,response) =>{
     response.render("jobs");
 });
- 
+
+app.get("/pastSales", (request,response) =>{
+    (async() =>{
+        try{
+            await client.connect();
+            let filter = {};
+            const number = await check_num()
+            const variables = {number: number};
+            response.render("pastSales",variables);
+            await client.close();
+        }catch(e){
+            console.error(e);
+        }
+    })();   
+
+});
  async function insertOrder(client,databaseAndCollection,newOrder){
     const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(newOrder);
 }
@@ -121,6 +153,17 @@ async function lookUpPerson(client, databaseAndCollection, filter){
     const result = await cursor.toArray();
     return result;
 }
+async function lookUpOrder(client, databaseAndCollection, filter){
+    const cursor = client.db(databaseAndCollection.db)
+    .collection(databaseAndCollection.collection)
+    .findOne(filter);
+    return cursor;
+}
 function captializeFirstLetter(string){
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+async function check_num(){
+    let result = client.db(databaseAndCollection.db)
+    .collection(databaseAndCollection.collection).countDocuments();
+    return result;
 }
