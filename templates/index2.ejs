@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Wendy's Bingfen</title>
+    <link rel="stylesheet" href="additional_files/decoration.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&effect=neon|outline|emboss|shadow-multiple">
+   
+</head>
+<body>
+    <div class="navigation">
+        <a href="/" class="active">Home</a>
+        <a href="/order">View Our Menu</a>
+        <a href="/trackorder">Track Order</a>
+        <a href="/pastSales">Past Sales</a> 
+        <a href="/story">Who We Are</a>
+        <a href="/jobs">Find Jobs</a>
+    </div>
+    <div>
+        <h1 class="font-effect-neon" id="larger-heading">Wendy's Bingfen</h1>
+    </div>
+    <div>
+        <h2 class="font-effect-shadow-multiple">Introduction</h2>
+        <p>
+            <b>Bingfen</b> (Chinese: 冰粉; pinyin: bīngfěn) is a beloved 
+            Chinese dessert originating from Southwest China in provinces
+            such as Sichuan, Guizhou, and Yunnan. This refreshing treat is
+            served as a bowl of iced transparent jelly, made from the 
+            seeds of the Nicandra physalodes plant, and is typically 
+            garnished with toppings like haw flakes and wolfberries.
+            Bingfen is a popular street food that is particularly enjoyed 
+            during the summertime for its cooling and soothing properties.
+            Here at Wendy's Bingfen, we're thrilled to offer this unique 
+            delicacy to our customers and share the flavors and culture 
+            of China with the world.
+        </p>
+        <div>
+            <img class = "image" src="/additional_files/bf3.jpeg" alt="Bingfen">
+        </div>
+    </div>
+    <div>
+        <h2 class="font-effect-shadow-multiple">Order Online</h2>
+          <p>Indulge in the refreshing taste of our authentic Chinese bingfen 
+            desserts. Made with high-quality ingredients and served with a 
+            variety of delicious toppings, our bingfen is the perfect treat
+             for any occasion. Place your order online today and experience 
+             the sweet and satisfying flavors of Wendy's Bingfen!
+            </p>
+        <div style="text-align:center">
+            <a href="/order" class="link">Place your order</a>
+        </div>
+    </div>
+    <div style="text-align:center">
+        <h2 class="font-effect-shadow-multiple">Track Your Order</h2>
+        <p>
+            <a href="/trackOrder" class="link">Click here</a>
+        </p>
+    </div>
+    <div style="text-align:center">
+        <h2 class="font-effect-shadow-multiple">Past Sales</h2>
+            <a href="/pastSales" class="link">Search past sales for Wendy's Bingfen</a>
+    </div>
+    <div>
+        <h2 class="font-effect-shadow-multiple">The Wendy's Story</h2>
+        <p>
+            First of all, yes, Wendy is a real person. And a pretty special one.
+             Today, she is one of the most involved and successful franchise 
+             owners in the Wendy's enterprise. Back in 2023, Wendy and her friends
+             Shilin, Wenyu, and Yiqian looked 
+             around at all other Bingfen joints and was like, “Nah. People 
+             deserve better.” At the time, other quick-service restaurants were 
+             using frozen Bingfen and mass-producing food. Not us. Our approach 
+             of serving fresh, made-to-order Bingfen changed the game. And our
+              can't-stop-won't-stop commitment to making customers happy drives 
+              everything we do today.
+        </p>
+        <div id = images>
+            <img id = "showImage" src="/additional_files/1.jpg" alt="image">
+        </div>
+        <div style="text-align:center">
+            <input class="button" type="button" id="slideShow" value="SlideShow"> 
+            <input class="button" type="button" id="stopSlideShow" value="StopSlideShow"><br><br>
+        </div>
+        <p>
+            Click the button <b>slideShow</b> to see all the pictures. Click 
+            the button <b>StopSlideShow</b> to stop it.
+        </p>
+
+        <div style="text-align:center">
+            <a href="/story" class="link">Get More History</a>
+        </div>
+    <div>
+        <hr>
+        <p> Developed by: Wenyu Chen and Shilin Huang</p>
+        <hr>
+    </div>
+</body>
+<script>
+    "use strict";
+    window.onload = main; 
+    let picNum = 5; //TODO: update the number when adding new pictures
+    let idGlobal;
+    const intervalInMilliseconds = 1000;
+    var photos = [];
+    var idx = Number.NEGATIVE_INFINITY;
+    function main() {
+        document.getElementById("slideShow").onclick = slideShow;
+        document.getElementById("stopSlideShow").onclick = stopSlideShow;
+        // load images
+        // store photos in an array
+        let count = 0
+        for(let i = 1; i <= picNum; i++) {
+            photos[count++] = "/additional_files/" + i + ".jpg";
+        }
+        // show the first image
+        if (idx < -1) {
+            idx = 0;
+        } 
+        showImage(0);
+    }
+
+    function showImage(i) {
+        document.querySelector("#showImage").src = photos[i];
+    }
+    function nextPhoto() {
+        
+            if (idx === photos.length-1) {
+                idx = -1;
+            }
+            showImage(++idx);
+    }
+    let slideShow = () => idGlobal = setInterval("nextPhoto()", intervalInMilliseconds);
+    let stopSlideShow = () => clearInterval(idGlobal);
+</script>

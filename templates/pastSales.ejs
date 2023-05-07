@@ -8,16 +8,29 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&effect=neon|outline|emboss|shadow-multiple">
 </head>
 <body>
-    <div class="navigation">
-        <a href="/">Home</a>
-        <a href="/order">View Our Menu</a>
-        <a href="/trackorder">Track Order</a>
-        <a href="/pastSales" class="active">Past Sales</a> 
-        <a href="/story">Who We Are</a>
-        <a href="/jobs">Find Jobs</a>
-    </div>
+        <!-- Navbar Start -->
+        <div class="container-fluid position-relative nav-bar p-0">
+            <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+                <nav class="navbar navbar-expand-lg bg-white navbar-light shadow p-lg-0">
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav ml-auto py-0">
+                            <a href="/" class="nav-item nav-link">Home</a>
+                            <a href="/order" class="nav-item nav-link">Order</a>
+                            <a href="/trackorder" class="nav-item nav-link">Track Order</a>
+                        </div>
+                            <h1 class="m-0 display-4 text-primary"><span class="text-secondary">W</span>endy's</h1>
+                        <div class="navbar-nav mr-auto py-0">
+                            <a href="/pastSales" class="nav-item nav-link active">Past Sales</a> 
+                            <a href="/story" class="nav-item nav-link">Story</a>
+                             <a href="/jobs" class="nav-item nav-link">Find Jobs</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Navbar End -->
     <div>
-        <h1 class="font-effect-neon" id="larger-heading">Sales History</h1>
+        <h1 class="m-0 display-4 text-primary"><span class="text-secondary">S</span>ales History</h1>
     </div>
     <div>
         <h2 class="font-effect-shadow-multiple">We have sold <%- number %> bowls of Bingfen

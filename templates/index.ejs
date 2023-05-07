@@ -6,59 +6,100 @@
     <title>Wendy's Bingfen</title>
     <link rel="stylesheet" href="additional_files/decoration.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&effect=neon|outline|emboss|shadow-multiple">
-   
+  
 </head>
 <body>
-    <div class="navigation">
-        <a href="/" class="active">Home</a>
-        <a href="/order">View Our Menu</a>
-        <a href="/trackorder">Track Order</a>
-        <a href="/pastSales">Past Sales</a> 
-        <a href="/story">Who We Are</a>
-        <a href="/jobs">Find Jobs</a>
+    <!-- I found a fancy CSS template online and used some of that code to make
+    my navigation bar and the beginning of the inedx page. My previous version
+    of index page is now under file index2.ejs. -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light shadow p-lg-0">
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="/" class="nav-item nav-link active">Home</a>
+                        <a href="/order" class="nav-item nav-link">Order</a>
+                        <a href="/trackorder" class="nav-item nav-link">Track Order</a>
+                    </div>
+                        <h1 class="m-0 display-4 text-primary"><span class="text-secondary">W</span>endy's</h1>
+                    <div class="navbar-nav mr-auto py-0">
+                        <a href="/pastSales" class="nav-item nav-link">Past Sales</a> 
+                        <a href="/story" class="nav-item nav-link">Story</a>
+                         <a href="/jobs" class="nav-item nav-link">Find Jobs</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
     </div>
+    <!-- Navbar End -->
+    <!--  
     <div>
         <h1 class="font-effect-neon" id="larger-heading">Wendy's Bingfen</h1>
     </div>
-    <div>
-        <h2 class="font-effect-shadow-multiple">Introduction</h2>
-        <p>
-            <b>Bingfen</b> (Chinese: 冰粉; pinyin: bīngfěn) is a beloved 
-            Chinese dessert originating from Southwest China in provinces
-            such as Sichuan, Guizhou, and Yunnan. This refreshing treat is
-            served as a bowl of iced transparent jelly, made from the 
-            seeds of the Nicandra physalodes plant, and is typically 
-            garnished with toppings like haw flakes and wolfberries.
-            Bingfen is a popular street food that is particularly enjoyed 
-            during the summertime for its cooling and soothing properties.
-            Here at Wendy's Bingfen, we're thrilled to offer this unique 
-            delicacy to our customers and share the flavors and culture 
-            of China with the world.
-        </p>
-        <div>
-            <img class = "image" src="/additional_files/bf3.jpeg" alt="Bingfen">
+    -->
+        <!-- About Start -->
+        <div class="container-fluid py-5">
+            <div class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5 bgimg"> <!-- Try to add an img on the left-->
+                    </div>
+                    <div class="col-lg-7">
+                        <h1 class="m-0 display-4 text-primary"><span class="text-secondary">D</span>elicious Bingfen Since 2023</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 py-5">
+                        <h2 class="font-effect-shadow-multiple">Introduction</h2>
+                        <p>
+                            <b>Bingfen</b> (Chinese: 冰粉; pinyin: bīngfěn) is a beloved 
+                            Chinese dessert originating from Southwest China in provinces
+                            such as Sichuan, Guizhou, and Yunnan. This refreshing treat is
+                            served as a bowl of iced transparent jelly, made from the 
+                            seeds of the Nicandra physalodes plant, and is typically 
+                            garnished with toppings like haw flakes and wolfberries.
+                            Bingfen is a popular street food that is particularly enjoyed 
+                            during the summertime for its cooling and soothing properties.
+                            Here at Wendy's Bingfen, we're thrilled to offer this unique 
+                            delicacy to our customers and share the flavors and culture 
+                            of China with the world.
+                        </p>
+                    </div>
+                    <div class="col-lg-4" style="min-height: 400px;">
+                        <div class="position-relative h-100 rounded overflow-hidden">
+                            <img class="position-absolute w-100 h-100" src="/additional_files/bf4.jpeg" style="object-fit: cover;">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 py-5">
+                        <h2 class="font-effect-shadow-multiple">Order Online</h2>
+                        <p>Indulge in the refreshing taste of our authentic Chinese bingfen 
+                            desserts. Made with high-quality ingredients and served with a 
+                            variety of delicious toppings, our bingfen is the perfect treat
+                             for any occasion. Place your order online today and experience 
+                             the sweet and satisfying flavors of Wendy's Bingfen!
+                        </p>
+                        <a href="/order" class="mt-2 link">Place your order</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div>
-        <h2 class="font-effect-shadow-multiple">Order Online</h2>
-          <p>Indulge in the refreshing taste of our authentic Chinese bingfen 
-            desserts. Made with high-quality ingredients and served with a 
-            variety of delicious toppings, our bingfen is the perfect treat
-             for any occasion. Place your order online today and experience 
-             the sweet and satisfying flavors of Wendy's Bingfen!
-            </p>
-        <div style="text-align:center">
-            <a href="/order" class="link">Place your order</a>
-        </div>
-    </div>
+        <!-- About End -->
+
     <div style="text-align:center">
         <h2 class="font-effect-shadow-multiple">Track Your Order</h2>
+        <div>
+            <img class = "slides" src="/additional_files/bf.jpeg" alt="Bingfen">
+        </div>
         <p>
             <a href="/trackOrder" class="link">Click here</a>
         </p>
     </div>
     <div style="text-align:center">
         <h2 class="font-effect-shadow-multiple">Past Sales</h2>
+        <div>
+            <img class = "slides" src="/additional_files/bf2.jpeg" alt="Bingfen">
+        </div>
             <a href="/pastSales" class="link">Search past sales for Wendy's Bingfen</a>
     </div>
     <div>
@@ -76,14 +117,14 @@
               everything we do today.
         </p>
         <div id = images>
-            <img id = "showImage" src="/additional_files/1.jpg" alt="image">
+            <img class ="slides" id = "showImage" src="/additional_files/1.jpg" alt="image">
         </div>
         <div style="text-align:center">
             <input class="button" type="button" id="slideShow" value="SlideShow"> 
             <input class="button" type="button" id="stopSlideShow" value="StopSlideShow"><br><br>
         </div>
-        <p>
-            Click the button <b>slideShow</b> to see all the pictures. Click 
+        <p style="text-align:center">
+            Note: Click the button <b>slideShow</b> to see all the pictures. Click 
             the button <b>StopSlideShow</b> to stop it.
         </p>
 
