@@ -126,10 +126,12 @@ app.post("/ordeConfirmation", (request, response) => {
     (async() =>{
         try{
             if(addQuote ==="on"){
-                quote = `<div id="quoteBox">`
-                let selected = await get_quote();
-                quote+= selected;
-                quote +=`</div>`;
+                //quote = `<div id="quoteBox"><strong>Quote: </strong>`
+                quote = `<strong id="quoteBox">Quote: </strong>`
+                //let selected = await get_quote();
+                //quote+= selected;
+                quote += "sd";
+                //quote +=`</div>`;
             }
             // console.log(quote)
             
