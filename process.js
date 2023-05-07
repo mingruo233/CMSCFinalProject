@@ -7,6 +7,14 @@ const bodyParser = require("body-parser"); /* To handle post parameters */
 const { MongoClient, ServerApiVersion } = require('mongodb');
 let portNumber = 5001;
 
+const url = 'https://andruxnet-random-famous-quotes.p.rapidapi.com/?cat=famous&count=1';
+const options = {
+	method: 'POST',
+	headers: {
+		'X-RapidAPI-Key': '0dd27d8a1cmshd0f0c26216413fcp188c74jsn82c992c3cf16',
+		'X-RapidAPI-Host': 'andruxnet-random-famous-quotes.p.rapidapi.com'
+	}
+};
 
 const app = express();
 const publicPath = path.resolve(__dirname,"templates");
@@ -74,7 +82,7 @@ app.use("/order", (request,response) =>{
     response.render("order");
 });
 app.post("/ordeConfirmation", (request, response) => {
-    let {name, email, delivery, bfsize,sugarLevel,itemsSelected,tip,orderInformation,phone1,phone2,phone3,cc1,cc2,cc3,cc4} = request.body;
+    let {name, email, delivery, bfsize,sugarLevel,itemsSelected,tip,orderInformation,phone1,phone2,phone3,cc1,cc2,cc3,cc4,addQuote} = request.body;
     let total_cost = 0;
     if (bfsize === "Small") {
         total_cost +=3.99;
@@ -86,42 +94,62 @@ app.post("/ordeConfirmation", (request, response) => {
     let phone = phone1+"-"+phone2+"-"+phone3;
     let creditCard = cc1+cc2+cc3+cc4;
     let credit = parseInt(creditCard);
-    (async() =>{
-        try{
-            await client.connect();
-            let order = {name:name,email:email,delivery:delivery,bfsize:bfsize,sugarLevel:sugarLevel,topping:itemsSelected,tip:tip,orderInformation:orderInformation,phoneNum:phone,creditCard:credit};
-            await insertOrder(client,databaseAndCollection,order);
-            await client.close();
-        }catch(e){
-            console.error(e);
-        }
-    })();
-    table_one =  `<thead><tr><th>Type </th> <th> Choice </th> </tr></thead>`
-    table_one += `<tbody><tr><td>Size</td><td> ${captializeFirstLetter(bfsize)} </td> </tr>`
-    table_one += `<tr><td>Sugar Level</td><td> ${parseInt(sugarLevel)}% </td> </tr>`
-    table_one += `<tr><td>Tip</td><td> ${parseInt(tip)}%</td> </tr></tbody>`
+    let quote = ``;
+    if(addQuote ==="on"){
+        total_cost += 0.99;
+    }
+    table_one =  `<thead><tr><th>Type </th> <th> Choice </th> </tr></thead>`;
+    table_one += `<tbody><tr><td>Size</td><td> ${captializeFirstLetter(bfsize)} </td> </tr>`;
+    table_one += `<tr><td>Sugar Level</td><td> ${parseInt(sugarLevel)}% </td> </tr>`;
+    table_one += `<tr><td>Tip</td><td> ${parseInt(tip)}%</td> </tr></tbody>`;
 
-    table_two = `<thead><tr><th>Chosen Topping </th> <th> Cost (USD)</th> </tr></thead><tbody>`
+    let table_two = `<thead><tr><th>Chosen Topping </th> <th> Cost (USD)</th> </tr></thead><tbody>`;
     let itemsList = all_toppings.filter((element) => 
     itemsSelected.includes(element.value));
     itemsList.forEach((element)=> {
         table_two+=`<tr><td>${element.name} </td><td>${element.cost} </td></tr>`;
         total_cost += element.cost;
     })
-    table_two += `</tbody>`
+    table_two += `</tbody>`;
     total_cost += total_cost*parseInt(tip)*0.01;
+    /* add to mango */
+    (async() =>{
+        try{
+            await client.connect();
+            let order = {name:name,email:email,delivery:delivery,bfsize:bfsize,sugarLevel:sugarLevel,topping:itemsSelected,orderInformation:orderInformation,phoneNum:phone,creditCard:credit,totalCost:total_cost};
+            await insertOrder(client,databaseAndCollection,order);
+            await client.close();
+        }catch(e){
+            console.error(e);
+        }
+    })();
+    (async() =>{
+        try{
+            if(addQuote ==="on"){
+                quote = `<div id="quoteBox">`
+                let selected = await get_quote();
+                quote+= selected;
+                quote +=`</div>`;
+            }
+            // console.log(quote)
+            
 
-    const variables = {
-        name: name,
-        email: email,
-        delivery: delivery,
-        info: orderInformation,
-        orderTable: table_one,
-        orderTableTopping: table_two,
-        totalCost: total_cost.toFixed(2),
-        phone: phone
-      };
-    response.render("orderConfirmation",variables)
+            const variables = {
+                name: name,
+                email: email,
+                delivery: delivery,
+                info: orderInformation,
+                orderTable: table_one,
+                orderTableTopping: table_two,
+                totalCost: total_cost.toFixed(2),
+                phone: phone,
+                chosenQuote: quote
+              };
+            response.render("orderConfirmation",variables);
+        }catch(e){
+            console.error(e);
+        }
+    })();
  });
 
  app.use("/jobs", (request,response) =>{
@@ -143,6 +171,7 @@ app.get("/pastSales", (request,response) =>{
     })();   
 
 });
+
  async function insertOrder(client,databaseAndCollection,newOrder){
     const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(newOrder);
 }
@@ -166,4 +195,13 @@ async function check_num(){
     let result = client.db(databaseAndCollection.db)
     .collection(databaseAndCollection.collection).countDocuments();
     return result;
+}
+async function get_quote(){
+    try {
+        const response = (await fetch(url, options));
+        const text = await response.json();
+        return text[0].quote;
+    } catch (error) {
+        console.error(error);
+    }
 }
