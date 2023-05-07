@@ -198,20 +198,6 @@ mark,
   content: "\2014\00A0";
 }
 
-.img-fluid {
-  max-width: 100%;
-  height: auto;
-}
-
-.img-thumbnail {
-  padding: 0.25rem;
-  background-color: #F3F6FF;
-  border: 1px solid #dee2e6;
-  border-radius: 5px;
-  max-width: 100%;
-  height: auto;
-}
-
 code {
   font-size: 87.5%;
   color: #e83e8c;
@@ -4256,10 +4242,6 @@ a > code {
   color: #F195B2 !important;
 }
 
-a.text-primary:hover, a.text-primary:focus {
-  color: #e85181 !important;
-}
-
 .text-secondary {
   color: #62C3E7 !important;
 }
@@ -4425,7 +4407,7 @@ body {
   font-family: 'ABeeZee';
   width: 50rem;
   border-style: double;
-  border-color: plum;
+  border-color: #F195B2;
   border-width: 1rem;
   padding: 0.5rem;
   margin-left: 6rem;
@@ -4466,7 +4448,7 @@ table.menu th, table.menu td {
   border: solid black;
 }
 table.menu th {
-  color:plum;
+  color:#F195B2;
 }
 td:first-child, th:first-child {
   width: 60%;
@@ -4502,7 +4484,7 @@ img {
   display: flex;
   justify-content: center;
   border-width: 0.3rem;
-  border-color:plum;
+  border-color:#F195B2;
   border-style: double;
   margin-top: 2rem;
   margin-left: 8rem;
@@ -4541,7 +4523,7 @@ img {
 }
 
 .inputNum {
-  width: 30px;
+  width: 40px;
 }
 /*
 .navigation {
@@ -4619,5 +4601,23 @@ form {
   background-size: 100%;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  
+}
+.thanks{
+  background-image: url(/additional_files/wenyu.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+.thanks2{
+  background-image: url(/additional_files/wenyu2.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+legend{
+  color:#F195B2;
+}
+Strong{
+color:#62C3E7;
+margin-left: 1rem;
 }
