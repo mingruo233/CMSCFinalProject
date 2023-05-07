@@ -2,7 +2,7 @@
 html {
   font-size: 22px;
 }
-
+/*
 body {
   font-family: 'ABeeZee';
   width: 50rem;
@@ -11,8 +11,26 @@ body {
   border-width: 1rem;
   padding: 0.5rem;
   margin-left: 6rem;
+}*/
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #555555;
+  text-align: left;
+  background-color: #F3F6FF;
 }
-
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
 div {
   background-color: white;
   padding: 1rem;
@@ -48,36 +66,97 @@ td:last-child, th:last-child {
 
 .button {
   font-size: 20px;
-  padding: 10px 20px; 
+  padding: 10px 20px;
   display: inline-block;
-  border-style: double;
-  border-width: 0.1rem;
+  border: 2px solid aqua;
+  background-color: white;
+  color: aqua;
+  font-weight: bold;
+  font-size: 1.2rem;
   border-radius: 0.4rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+  margin-left: 1rem; 
+  margin-right: 1rem; 
+}
+
+.button:hover {
+  background-color: aqua;
+  color: white;
 }
 
 img {
+  border-radius: 50px;
   display: flex;
   justify-content: center;
-  border-width: 0.5rem;
-  border-color: plum;
-  border-style: dashed;
+  border-width: 0.3rem;
+  border-color:plum;
+  border-style: double;
   margin-top: 2rem;
   margin-left: 8rem;
   width:30rem;
 }
 
-a:hover {
-  font-size:0.9rem;
+.link {
+  display: inline-block;
+  padding: 10px;
+  border: 2px solid aqua;
+  border-radius: 5px;
+  text-decoration: none;
+  color: aqua;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
 }
-a:visited{
-  color: violet;
+
+.link:hover {
+  background-color: aqua;
+  color: white;
+  border-color: white;
 }
+
 .inputNum {
   width: 30px;
 }
+/*
 .navigation {
   text-align: right;
+}*/
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: hotpink;
+  padding: 10px;
 }
+
+.navigation a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.navigation a:hover {
+  text-decoration: underline;
+}
+.navigation a.active {
+  color:aqua;
+}
+.round-frame {
+  border-radius: 50%;
+  overflow: hidden;
+}
+.bgimg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/additional_files/.jpg");
+  min-height: 90%;
+}
+
 /* add a background image
 #backgroundDiv {
   background-color: rgb(165, 206, 223);
@@ -92,3 +171,24 @@ a:visited{
   border-color: green;
   border-width: 0.5rem;
 }*/
+.picture-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+}
+
+.picture {
+  width: 13rem;
+  height: 13rem;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: -1rem 0 0 -1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+}
+
+.picture:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}

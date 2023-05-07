@@ -6,8 +6,16 @@
     <title>Order</title>
     <link rel="stylesheet" href="additional_files/decoration.css" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&effect=neon|outline|emboss|shadow-multiple">
+</head>
 <body>
-  <!-- TODO Nav-->
+  <div class="navigation">
+    <a href="/">Home</a>
+    <a href="/order" class="active">View Our Menu</a>
+    <a href="/trackorder">Track Order</a>
+    <a href="/pastSales">Past Sales</a> 
+    <a href="/story">Who We Are</a>
+    <a href="/jobs">Find Jobs</a>
+</div>
     <div>
         <h1 class="font-effect-neon" id="larger-heading">Order Now</h1>
         <p>Ready to order your delicious bingfen dessert? 
@@ -154,16 +162,33 @@
                 <input type="text" id="cc4" name="cc4" maxlength="4" placeholder="0000" required class="inputNum">
             </fieldset>
             <fieldset>
+              <legend>Create Your Personalized Bingfen Cup</legend>
+              
+              <label>
+                 <!-- TODO -->
+                 <p> Want to add a touch of literary inspiration to your cup? <br>
+                  For just $0.99, you can choose to have a randomly generated 
+                  quote printed on your Bingfen cup. Plus, feel good knowing 
+                  that all proceeds will be donated to a literacy-focused 
+                  organization. So go ahead, add a little extra inspiration to 
+                  your day and support a great cause!</p>
+                <input type="checkbox" name="addQuote" id="addQuote">
+                Yes, I want to add a quote.
+              </label>
+            </fieldset>
+            <fieldset>
                 <legend>Additional Order Information</legend>
                 <label><textarea rows="5" cols="80" name="orderInformation"></textarea></label>
             </fieldset>
             <br>
-            <input class="button" type="reset"/>
-            <input class="button" type="submit" value="Place order"/>
+            <div style="text-align:center">
+              <input class="button" type="reset"/>
+              <input class="button" type="submit" value="Place order"/>
+            </div>
         </form>
     </div>
-    <div>
-        <a href="/">HOME</a>
+    <div style="text-align:center">
+        <a href="/" class="link">HOME</a>
     </div>
     <div>
         <hr>

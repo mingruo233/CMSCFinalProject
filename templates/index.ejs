@@ -6,9 +6,11 @@
     <title>Wendy's Bingfen</title>
     <link rel="stylesheet" href="additional_files/decoration.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&effect=neon|outline|emboss|shadow-multiple">
+   
+</head>
 <body>
     <div class="navigation">
-        <a href="/">Home</a>
+        <a href="/" class="active">Home</a>
         <a href="/order">View Our Menu</a>
         <a href="/trackorder">Track Order</a>
         <a href="/pastSales">Past Sales</a> 
@@ -34,7 +36,7 @@
             of China with the world.
         </p>
         <div>
-            <img class = "image" src="/additional_files/bf.jpeg" alt="Bingfen">
+            <img class = "image" src="/additional_files/bf3.jpeg" alt="Bingfen">
         </div>
     </div>
     <div>
@@ -45,17 +47,19 @@
              for any occasion. Place your order online today and experience 
              the sweet and satisfying flavors of Wendy's Bingfen!
             </p>
-        <a href="/order">Place your order</a>
+        <div style="text-align:center">
+            <a href="/order" class="link">Place your order</a>
+        </div>
     </div>
-    <div>
+    <div style="text-align:center">
         <h2 class="font-effect-shadow-multiple">Track Your Order</h2>
         <p>
-            <a href="/trackOrder">Click here</a>
+            <a href="/trackOrder" class="link">Click here</a>
         </p>
     </div>
-    <div>
+    <div style="text-align:center">
         <h2 class="font-effect-shadow-multiple">Past Sales</h2>
-            <a href="/pastSales">Search past sales for Wendy's Bingfen</a>
+            <a href="/pastSales" class="link">Search past sales for Wendy's Bingfen</a>
     </div>
     <div>
         <h2 class="font-effect-shadow-multiple">The Wendy's Story</h2>
@@ -74,20 +78,28 @@
         <div id = images>
             <img id = "showImage" src="/additional_files/1.jpg" alt="image">
         </div>
-        <input class="button" type="button" id="slideShow" value="SlideShow"> 
-        <input class="button" type="button" id="stopSlideShow" value="StopSlideShow"><br><br>
-        <a href="/story">Get More History</a>
-    </div>
+        <div style="text-align:center">
+            <input class="button" type="button" id="slideShow" value="SlideShow"> 
+            <input class="button" type="button" id="stopSlideShow" value="StopSlideShow"><br><br>
+        </div>
+        <p>
+            Click the button <b>slideShow</b> to see all the pictures. Click 
+            the button <b>StopSlideShow</b> to stop it.
+        </p>
+
+        <div style="text-align:center">
+            <a href="/story" class="link">Get More History</a>
+        </div>
     <div>
         <hr>
         <p> Developed by: Wenyu Chen and Shilin Huang</p>
         <hr>
-        </div>
+    </div>
 </body>
 <script>
     "use strict";
     window.onload = main; 
-    let picNum = 4; //TODO: update the number when adding new pictures
+    let picNum = 5; //TODO: update the number when adding new pictures
     let idGlobal;
     const intervalInMilliseconds = 1000;
     var photos = [];
@@ -98,7 +110,6 @@
         // load images
         // store photos in an array
         let count = 0
-        //TODO: change the number of photos
         for(let i = 1; i <= picNum; i++) {
             photos[count++] = "/additional_files/" + i + ".jpg";
         }
