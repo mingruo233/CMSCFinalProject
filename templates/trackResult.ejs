@@ -32,14 +32,22 @@
     <div>
         <h1 class="m-0 display-4 text-primary"><span class="text-secondary">O</span>rder Information</h1>
         <div>
+            <fieldset> 
+                <legend>Customer Information</legend>
             <strong>Name: </strong><%- name %><br>
             <strong>Email Address: </strong><%- email %><br>
-            <strong>Delivery Method: </strong><%- delivery %><br>
-            <h3>Order</h3>
-            <%- orderTable %>
-            <br>
-            <strong>Tips: </strong><%- tips %><br>
-            <strong>Additional Information: </strong><%- info %><br>
+            </fieldset>
+            <h2 class="font-effect-shadow-multiple">You have spend <%- dollar %> in our store and have enjoyed <%- number %> bowls of Bingfen
+                since 2023. </h2><br>
+            <h2 class="font-effect-shadow-multiple">Thank you for your support❤️</h2><br>
+            Here is information about your most recent order            
+            <table class="menu">
+                <%- orderTable %>
+            </table>
+            <table class="menu">
+                <%- orderTableTopping %>
+            </table>
+            
         </div>
     </div>
     <div style="text-align:center">

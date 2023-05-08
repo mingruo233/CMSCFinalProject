@@ -174,15 +174,57 @@ app.get("/pastSales", (request,response) =>{
 
 });
 
+app.post("/trackResult", (request,response) =>{
+    let {name, email} = request.body;
+    (async() =>{
+        try{
+            await client.connect();
+            let filter = {name:{$eq:name},email:{$eq:email}};
+            const result = await lookMostRecent(client,databaseAndCollection,filter);
+            let [recentOrder,dollar,number]= result;
+            let table_one =  `<thead><tr><th>Type </th> <th> Choice </th> </tr></thead>`;
+            table_one += `<tbody><tr><td>Size</td><td> ${captializeFirstLetter(recentOrder.bfsize)} </td> </tr>`;
+            table_one += `<tr><td>Sugar Level</td><td> ${parseInt(recentOrder.sugarLevel)}% </td> </tr>`;
+
+            let table_two = `<thead><tr><th>Chosen Topping </th> <th> Cost (USD)</th> </tr></thead><tbody>`;
+            let itemsList = all_toppings.filter((element) => 
+            recentOrder.topping.includes(element.value));
+            itemsList.forEach((element)=> {
+                table_two+=`<tr><td>${element.name} </td><td>${element.cost} </td></tr>`;
+            })
+            const variables = {name: name,email:email,dollar:dollar.toFixed(2),number:number,orderTable: table_one,
+                orderTableTopping: table_two};
+            response.render("trackResult",variables);
+            await client.close();
+        }catch(e){
+            console.error(e);
+        }
+    })();   
+
+});
+
+
  async function insertOrder(client,databaseAndCollection,newOrder){
     const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(newOrder);
 }
-async function lookUpPerson(client, databaseAndCollection, filter){
+async function lookMostRecent(client, databaseAndCollection, filter){
     const cursor = client.db(databaseAndCollection.db)
     .collection(databaseAndCollection.collection)
+    .find(filter).sort({ createdAt: -1 }).limit(1);
+    const most_recent = await cursor.toArray();
+    const cursor2 = client.db(databaseAndCollection.db)
+    .collection(databaseAndCollection.collection)
     .find(filter);
-    const result = await cursor.toArray();
-    return result;
+    const result2 = await cursor2.toArray();
+    let total_cost = 0;
+    let total_num = 0;
+    for (const element of result2) {
+        let curr = Number(element.totalCost);
+        total_cost += curr;
+        total_num += 1;
+    }
+    let final = most_recent.concat([total_cost,total_num]); 
+    return final;
 }
 async function lookUpOrder(client, databaseAndCollection, filter){
     const cursor = client.db(databaseAndCollection.db)
@@ -207,3 +249,14 @@ async function get_quote(){
         console.error(error);
     }
 }
+async function listDatabases(client) {
+    let filter = {};
+    const cursor = client.db(databaseAndCollection.db)
+    .collection(databaseAndCollection.collection)
+    .find(filter);
+    
+    const result = await cursor.toArray();
+    console.log(`Found: ${result.length} movies`);
+    console.log(result);
+}
+
