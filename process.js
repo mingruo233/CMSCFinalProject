@@ -181,17 +181,34 @@ app.post("/trackResult", (request,response) =>{
             await client.connect();
             let filter = {name:{$eq:name},email:{$eq:email}};
             const result = await lookMostRecent(client,databaseAndCollection,filter);
-            let [recentOrder,dollar,number]= result;
+        
+            let [recentOrder,dollar,number_order]= result;
+            let number = 0;
+            if(recentOrder){
+                number = number_order;
+            }
             let table_one =  `<thead><tr><th>Type </th> <th> Choice </th> </tr></thead>`;
-            table_one += `<tbody><tr><td>Size</td><td> ${captializeFirstLetter(recentOrder.bfsize)} </td> </tr>`;
-            table_one += `<tr><td>Sugar Level</td><td> ${parseInt(recentOrder.sugarLevel)}% </td> </tr>`;
+            let bfsize = "Null";
+            let sugarLevel = "Null";
+            if(recentOrder.bfsize){
+                bfsize = captializeFirstLetter(recentOrder.bfsize)
+            }
+            if(recentOrder.sugarLevel){
+                sugarLevel = String(parseInt(recentOrder.sugarLevel));
+            }
+            table_one += `<tbody><tr><td>Size</td><td> ${bfsize} </td> </tr>`;
+            table_one += `<tr><td>Sugar Level</td><td> ${sugarLevel}% </td> </tr>`;
 
             let table_two = `<thead><tr><th>Chosen Topping </th> <th> Cost (USD)</th> </tr></thead><tbody>`;
+
+            if(recentOrder){
+        
             let itemsList = all_toppings.filter((element) => 
             recentOrder.topping.includes(element.value));
             itemsList.forEach((element)=> {
                 table_two+=`<tr><td>${element.name} </td><td>${element.cost} </td></tr>`;
             })
+            }
             const variables = {name: name,email:email,dollar:dollar.toFixed(2),number:number,orderTable: table_one,
                 orderTableTopping: table_two};
             response.render("trackResult",variables);
