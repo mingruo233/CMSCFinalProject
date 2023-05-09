@@ -83,6 +83,8 @@ app.use("/order", (request,response) =>{
 });
 app.post("/ordeConfirmation", (request, response) => {
     let {name, email, delivery, bfsize,sugarLevel,itemsSelected,tip,orderInformation,phone1,phone2,phone3,cc1,cc2,cc3,cc4,addQuote} = request.body;
+    name = name.toLowerCase();
+    email = email.toLowerCase();
     let total_cost = 0;
     if (bfsize === "Small") {
         total_cost +=3.99;
@@ -175,6 +177,8 @@ app.get("/pastSales", (request,response) =>{
 
 app.post("/trackResult", (request,response) =>{
     let {name, email} = request.body;
+    name = name.toLowerCase();
+    email = email.toLowerCase();
     (async() =>{
         try{
             await client.connect();
