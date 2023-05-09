@@ -4436,22 +4436,36 @@ h1,h2 {
 #larger-heading {
   font-size: 3em;
 }
+#formcontainer {
+  box-shadow: 1px 1px 5px grey;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
 
 table.menu {
   width: 90%;
   margin-bottom: 20px;
   margin-left: 2rem;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 2px solid #f4bccd;
+  box-shadow: 2px 2px 5px grey;
 }
 table.menu th, table.menu td {
   padding: 0.5rem;
   text-align: center;
-  border: solid black;
+  border: 1px solid #f4bccd;
 }
 table.menu th {
-  color:#F195B2;
+  color:whitesmoke;
+  background-color: #f4bccd;
 }
 td:first-child, th:first-child {
   width: 60%;
+}
+tr:nth-child(odd) {
+  background-color: #bbecf0;
 }
 
 td:last-child, th:last-child {
@@ -4598,8 +4612,9 @@ img {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
 }
 form {
-  width:50rem;
-  margin-left: 5rem;
+
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .bgimg{
