@@ -230,7 +230,7 @@ app.post("/trackResult", (request,response) =>{
 async function lookMostRecent(client, databaseAndCollection, filter){
     const cursor = client.db(databaseAndCollection.db)
     .collection(databaseAndCollection.collection)
-    .find(filter).sort({ createdAt: -1 }).limit(1);
+    .find(filter).sort({_id:-1}).limit(1);
     const most_recent = await cursor.toArray();
     const cursor2 = client.db(databaseAndCollection.db)
     .collection(databaseAndCollection.collection)
