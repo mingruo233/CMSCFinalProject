@@ -118,8 +118,8 @@
                    Customer Information
                 </legend>
                 
-                <label>Name: <input type="text" name="name"/></label>
-                <label>Email Address: <input type="email" name="email"  placeholder="example@notreal.notreal"></label>
+                <label>Name: <input type="text" name="name" required/></label>
+                <label>Email Address: <input type="email" name="email"  placeholder="example@notreal.notreal" required></label>
                 <label for="cc1">Phone Number:</label>
                 <input type="text" id="phone1" name="phone1" maxlength="3" placeholder="123" required class="inputNum"> -
                 <input type="text" id="phone2" name="phone2" maxlength="3" placeholder="456" required class="inputNum"> -
@@ -127,24 +127,24 @@
             </fieldset>
             <fieldset>
                 <legend>Delivery Method</legend>
-                <label><input type="radio" name="delivery" value="pickup">Pick up order</label>
-                <label><input type="radio" name="delivery" value="delivery">Deliver order</label>
+                <label><input type="radio" name="delivery" value="pickup" required>Pick up order</label>
+                <label><input type="radio" name="delivery" value="delivery" required>Deliver order</label>
             </fieldset>
             <fieldset>
                 <legend>Size</legend>
-                <label><input type="radio" name="bfsize" value="small">Small</label>
-                <label><input type="radio" name="bfsize" value="medium">Medium</label>
-                <label><input type="radio" name="bfsize" value="large">Large</label>
+                <label><input type="radio" name="bfsize" value="small" required>Small</label>
+                <label><input type="radio" name="bfsize" value="medium" required>Medium</label>
+                <label><input type="radio" name="bfsize" value="large" required>Large</label>
             </fieldset>
             <fieldset>
                 <legend>Sugar Level</legend>
-                <label><input type="radio" name="sugarLevel" value="0sugar">0%</label>
-                <label><input type="radio" name="sugarLevel" value="30sugar">30%</label>
-                <label><input type="radio" name="sugarLevel" value="50sugar">50%</label>
-                <label><input type="radio" name="sugarLevel" value="70sugar">70%</label>
-                <label><input type="radio" name="sugarLevel" value="100sugar">100%</label>
-                <label><input type="radio" name="sugarLevel" value="130sugar">130%</label>
-                <label><input type="radio" name="sugarLevel" value="150sugar">150%</label>
+                <label><input type="radio" name="sugarLevel" value="0sugar" required>0%</label>
+                <label><input type="radio" name="sugarLevel" value="30sugar" required>30%</label>
+                <label><input type="radio" name="sugarLevel" value="50sugar" required>50%</label>
+                <label><input type="radio" name="sugarLevel" value="70sugar" required>70%</label>
+                <label><input type="radio" name="sugarLevel" value="100sugar" required>100%</label>
+                <label><input type="radio" name="sugarLevel" value="130sugar" required>130%</label>
+                <label><input type="radio" name="sugarLevel" value="150sugar" required>150%</label>
             </fieldset>
             <fieldset>
                 <legend>Toppings</legend>
@@ -161,11 +161,11 @@
             </fieldset>
             <fieldset>
                 <legend>Tips</legend>
-                <label><input type="radio" name="tip" value="0tip">0%</label>
-                <label><input type="radio" name="tip" value="5tip">5%</label>
-                <label><input type="radio" name="tip" value="10tip">10%</label>
-                <label><input type="radio" name="tip" value="15tip">15%</label>
-                <label><input type="radio" name="tip" value="20tip">20%</label>
+                <label><input type="radio" name="tip" value="0tip" required>0%</label>
+                <label><input type="radio" name="tip" value="5tip" required>5%</label>
+                <label><input type="radio" name="tip" value="10tip" required>10%</label>
+                <label><input type="radio" name="tip" value="15tip" required>15%</label>
+                <label><input type="radio" name="tip" value="20tip" required>20%</label>
             </fieldset>
             <fieldset>
               <legend>Payment</legend>
@@ -224,4 +224,12 @@
         <p> Developed by: Wenyu Chen and Shilin Huang</p>
             <hr>
         </div>
+    <script>
+        window.onsubmit = comfirm;
+
+        function comfirm(){
+            let comfirmation = "Are you sure to submit the order?\n";
+            return window.confirm(comfirmation);
+        }
+      </script>
 </body>
