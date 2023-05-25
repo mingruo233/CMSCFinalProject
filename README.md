@@ -10,6 +10,6 @@ Project Description:
     randomly selected quote printed on it ( where we use API), track their
     recent orders, and learn about the story of our store.
 
-API links: https://wendysbingfen.onrender.com
+Website: https://wendysbingfen.onrender.com
 
-YouTube Demo Video:
+YouTube Demo Video: https://youtu.be/m_xybxQD8OQ
