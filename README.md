@@ -6,9 +6,8 @@ Team Members:
     Shilin Huang (shilin40)
 
 Project Description:
-    Customers can order Bingfen on this website. They can customize their cup with a
-    randomly selected quote printed on it ( where we use API), track their
-    recent orders, and learn about the story of our store.
+    Project developed using Javascript, HTML, Node.js, and MangoDB.
+    Customers are able to order Bingfen on this website and track their order status.
 
 Website: https://wendysbingfen.onrender.com
 
